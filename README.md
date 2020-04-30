@@ -1,9 +1,9 @@
 # Aim-Trainer
-###(Under Development)
+### (Under Development)
 
 Making a aim trainer using Javascript(vanilla) and Html.
 
-###How It Works
+### How It Works
 
 So there is a canvas in which everything happens. 
 The web application continuosly draws circle of random size at random coordinates.
