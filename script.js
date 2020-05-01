@@ -40,7 +40,7 @@ function target() {
   ctx.closePath();
   ctx.fill();
 
-  setTimeout(target ,2000);
+  setTimeout(target ,900);
 }
 
 target();
