@@ -1,5 +1,6 @@
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
+var bullet = 1;
 var mposX;
 var mposY;
 var targetX;
@@ -13,23 +14,26 @@ document.addEventListener("click", mousePosition);
 function mousePosition(event) {
    mposX = event.clientX ;
    mposY = event.clientY ;
-   detectHits();
+   if (bullet == 1) {
+       detectHits();
+   }
 }
 
 function detectHits() {
   distance = Math.round(Math.sqrt(Math.pow((targetX - mposX), 2) + Math.pow((targetY - mposY), 2)));
   if (distance <= targetRadius) {
-    if (distance < 2) {
-      score = score + 10;
-    }else {
-      score = score + 5;
-    }
+      bullet = 0;
+      if (distance < 2) {
+          score = score + 10;
+      }else {
+          score = score + 5;
+      }
   }
-    document.getElementById('score').innerHTML = "Score: " + score;
+  document.getElementById('score').innerHTML = "Score: " + score;
 }
 
-
 function target() {
+  bullet = 1;
   ctx.clearRect(0, 0, 1000, 600);
   targetX = Math.floor((Math.random() * 800) + 20);
   targetY = Math.floor((Math.random() * 500) + 20);
@@ -39,8 +43,6 @@ function target() {
   ctx.arc(targetX,targetY,targetRadius,0,2 * Math.PI);
   ctx.closePath();
   ctx.fill();
-
-  setTimeout(target ,900);
 }
-
+setInterval(target ,2000);
 target();
