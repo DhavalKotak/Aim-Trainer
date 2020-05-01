@@ -45,5 +45,5 @@ function target() {
   ctx.closePath();
   ctx.fill();
 }
-setInterval(target ,2000);
+setInterval(target ,1500);
 target();
