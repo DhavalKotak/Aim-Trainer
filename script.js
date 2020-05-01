@@ -12,10 +12,11 @@ var score = 0;
 document.addEventListener("click", mousePosition);
 
 function mousePosition(event) {
-   mposX = event.clientX ;
-   mposY = event.clientY ;
+   
    if (bullet == 1) {
-       detectHits();
+      mposX = event.clientX ;
+      mposY = event.clientY ;
+      detectHits();
    }
 }
 
