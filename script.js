@@ -19,6 +19,7 @@ function mousePosition(event) {
       mposY = event.clientY ;
       detectHits();
    }else {
+     document.getElementById('score').innerHTML = "Game Over";
      clearInterval(game);
    }
 }
