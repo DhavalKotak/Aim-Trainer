@@ -8,15 +8,18 @@ var targetY;
 var targetRadius;
 var distance;
 var score = 0;
+var lives = 10;
+var color = "blue";
 
 document.addEventListener("click", mousePosition);
 
 function mousePosition(event) {
-   
-   if (bullet == 1) {
+   if (lives != 0 && bullet == 1) {
       mposX = event.clientX ;
       mposY = event.clientY ;
       detectHits();
+   }else {
+     clearInterval(game);
    }
 }
 
@@ -24,11 +27,16 @@ function detectHits() {
   distance = Math.round(Math.sqrt(Math.pow((targetX - mposX), 2) + Math.pow((targetY - mposY), 2)));
   if (distance <= targetRadius) {
       bullet = 0;
-      if (distance < 2) {
+      if (distance < 3) {
+          drawTarget("red");
           score = score + 10;
       }else {
+          drawTarget("#fb6901");
           score = score + 5;
       }
+  }else {
+      drawTarget("yellow");
+      lives--;
   }
   document.getElementById('score').innerHTML = "Score: " + score;
 }
@@ -39,11 +47,15 @@ function target() {
   targetX = Math.floor((Math.random() * 800) + 20);
   targetY = Math.floor((Math.random() * 500) + 20);
   targetRadius = Math.floor((Math.random() * 20) + 8);
-  ctx.fillStyle = "green";
+  drawTarget("blue");
+}
+
+function drawTarget(color) {
+  ctx.fillStyle = color;
   ctx.beginPath();
   ctx.arc(targetX,targetY,targetRadius,0,2 * Math.PI);
   ctx.closePath();
   ctx.fill();
 }
-setInterval(target ,1500);
-target();
+
+var game = setInterval(target ,1100);
