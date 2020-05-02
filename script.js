@@ -15,6 +15,7 @@ document.addEventListener("click", mousePosition);
 
 function mousePosition(event) {
    if (lives != 0 && bullet == 1) {
+      //getting coordinates of mouse click
       mposX = event.clientX ;
       mposY = event.clientY ;
       detectHits();
@@ -25,6 +26,7 @@ function mousePosition(event) {
 }
 
 function detectHits() {
+  //calculating distance between target center and mouse click to detect hits
   distance = Math.round(Math.sqrt(Math.pow((targetX - mposX), 2) + Math.pow((targetY - mposY), 2)));
   if (distance <= targetRadius) {
       bullet = 0;
@@ -43,6 +45,7 @@ function detectHits() {
 }
 
 function target() {
+  //setting target coordinates
   bullet = 1;
   ctx.clearRect(0, 0, 1000, 600);
   targetX = Math.floor((Math.random() * 800) + 20);
@@ -52,6 +55,7 @@ function target() {
 }
 
 function drawTarget(color) {
+  //drawing target
   ctx.fillStyle = color;
   ctx.beginPath();
   ctx.arc(targetX,targetY,targetRadius,0,2 * Math.PI);
