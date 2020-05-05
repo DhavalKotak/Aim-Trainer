@@ -1,7 +1,9 @@
 # Aim-Trainer
 ### (Under Development)
 
-Making a aim trainer using Javascript(vanilla) and Html.
+Making a aim trainer using Javascript(vanilla) and Html. 
+
+[Click here to play](https://dhavalkotak.github.io/Aim-Trainer/)
 
 ### How It Works
 
