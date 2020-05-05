@@ -13,6 +13,7 @@ var color = "blue";
 
 document.addEventListener("click", mousePosition);
 
+//getting coordinates of mouse click
 function mousePosition(event) {
    if (lives != 0 && bullet == 1) {
       mposX = event.clientX ;
@@ -21,6 +22,7 @@ function mousePosition(event) {
    }
 }
 
+//calculating distance between target center and mouse click to detect hits
 function detectHits() {
   distance = Math.round(Math.sqrt(Math.pow((targetX - mposX), 2) + Math.pow((targetY - mposY), 2)));
   if (distance <= targetRadius) {
@@ -39,6 +41,7 @@ function detectHits() {
   document.getElementById('score').innerHTML = "Score: " + score + " Lives: " + lives;
 }
 
+//setting target coordinates
 function target() {
   bullet = 1;
   ctx.clearRect(0, 0, 1000, 600);
@@ -53,7 +56,8 @@ function target() {
     clearInterval(game);
   }
 }
-
+ 
+//drawing target
 function drawTarget(color) {
   ctx.fillStyle = color;
   ctx.beginPath();
